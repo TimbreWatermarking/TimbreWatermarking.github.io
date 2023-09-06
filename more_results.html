@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <title>Timbre Watermarking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#157878" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/cayman.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="icon" href="#">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Detecting Voice Cloning Attacks<br>via Timbre Watermarking</h1>
+      <!-- <h2 class="project-tagline">Detecting Voice Cloning Attacks via Timbre Watermarking</h2> -->
+      <a href="index.html" class="btn">Home</a>
+      <a href="more_results.html" class="btn">More Results</a>
+      <a href="code.html" class="btn">Code</a>
+      <a href="samples.html" class="btn">Audio Samples</a>
+      <a href="mos.html" class="btn">MOS Test Samples</a>
+    </section>
+
+<section class="main-content">
+      
+  <div id="home">
+    <h2>Traditional watermarking samples</h2>
+    Traditional watermarking schemes are also reliably imperceptible, and some of their watermark samples are shown below, but they usually require strict synchronization mechanisms, which are corrupted by deep speech cloning models.
+    <div class="table-container">
+      <table>
+        <tr>
+        <th>File Name</th><th>LJ001-0001.wav</th><th>LJ001-0002.wav</th><th>LJ001-0003.wav</th><th>LJ001-0004.wav</th><th>LJ001-0005.wav</th></tr>
+          <tr>
+            <td>Original Audio</td><td><audio controls><source src="samples\0+Watermark Fidelity\original cover\LJ001-0001.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\original cover\LJ001-0002.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\original cover\LJ001-0003.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\original cover\LJ001-0004.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\original cover\LJ001-0005.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td><a href="https://ieeexplore.ieee.org/document/9468371">FSVC</a></td><td><audio controls><source src="samples\0+Watermark Fidelity\FSVC\LJ001-0001.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\FSVC\LJ001-0002.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\FSVC\LJ001-0003.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\FSVC\LJ001-0004.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\FSVC\LJ001-0005.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td><a href="https://ieeexplore.ieee.org/document/8470100">RFDLM</a></td><td><audio controls><source src="samples\0+Watermark Fidelity\RFDLM\LJ001-0001.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\RFDLM\LJ001-0002.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\RFDLM\LJ001-0003.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\RFDLM\LJ001-0004.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\RFDLM\LJ001-0005.wav" type="audio/wav"></audio></td>
+          </tr>
+      </table>
+    </div>
+
+      
+
+    <h2>Distortion caused by ISTFT</h2>
+    In order to explore the impact of ISTFT distortion, we calculated the difference between the amplitude spectrum after embedding the watermark and the amplitude spectrum after performing ISTFT and STFT on it. 
+    It can be found that the difference between them is so small (i.e., average MSE 0.0020) that it does not destroy the watermarked signal. 
+    A spectrogram example and the MSE of amplitude spectrum pair from all 2620 test samples are shown below.
+    <div style="display: flex;">
+      <div style="flex: 1; margin: 10px;">
+          <img src="figure/linear_wmed_amplitude_spectrogram.png" alt="Watermarked spectrum">
+          <p style="text-align: center; font-size: 13px; font-style:italic;">Watermarked spectrum</p>
+      </div>
+      <div style="flex: 1; margin: 10px;">
+          <img src="figure/linear_wmed_istft_stft_amplitude_spectrogram.png" alt="Watermarked spectrum &rarr; ISTFT &rarr; STFT">
+          <p style="text-align: center; font-size: 13px; font-style:italic;">Watermarked spectrum &rarr; ISTFT &rarr; STFT</p>
+      </div>
+      <div style="flex: 1; margin: 10px;">
+        <img src="figure/istft-mse-1.png" alt="istft-mse">
+        <p style="text-align: center; font-size: 13px; font-style:italic;">MSE on amplitude spectrum caused by ISTFT reconstruction. Black dots and white dots indicate mean value and median value, respectively.</p>
+    </div>
+    </div>
+    <!-- <img src="figure/linear_wmed_amplitude_spectrogram.png" alt="Watermarked spectrum">
+    <img src="figure/linear_wmed_istft_stft_amplitude_spectrogram.png" alt="Watermarked spectrum &rarr; ISTFT &rarr; STFT"> -->
+    
+
+
+    <h2>Details of the discriminator</h2>
+    The discriminator is integrated with the embedding process in the adversarial training manner, which is fed with watermarked and clean audio(as shown below), not synthetic and real speech. 
+    Therefore, the training of the discriminator is carried out simultaneously with watermark embedding and extraction, and it is confronted with the watermark embedding network, which is the idea of <a herf="https://arxiv.org/abs/1406.2661">GAN</a>.
+    Such a manner aims to improve the fidelity, namely, making watermarked audio indistinguishable from the original audio.
+    
+    <div style="display: flex;">
+      <div style="flex: 1; margin: 10px; text-align: center;">
+          <img src="figure/model-framework-d.png" alt="Framework with discriminator" width="80%">
+          <p style="text-align: center; font-size: 13px; font-style:italic;">Framework with discriminator</p>
+      </div>
+    </div>
+    The Discriminator comprises a comprehensive architecture consisting of the STFT, three ReluBlocks, an average pooling layer, and a linear layer. The ultimate output of this structure is the prediction result for the input audio. 
+    Each ReluBlock contains a convolutional layer, an InstanceNorm, and the LeakyReLU activation function.
+
+
+
+
+    <h2>The effect of skip concatenate</h2>
+    We performed ablation experiments for skip concatenate with the following experimental results, which show that this operation only slightly improves fidelity and robustness.
+    <!-- <div style="display: flex;">
+      <div style="flex: 1; margin: 10px; text-align: center;">
+          <img src="figure/skip-ablation_fidelity-1.png" alt="Fidelity comparison between Full Model and the Skip Ablation Watermarking Model." width="50%">
+          <div style="width: 50%; margin: 0 auto;">
+            <p style="text-align: center; font-size: 13px; font-style:italic;">Fidelity comparison between Full Model and the Skip Ablation Watermarking Model. Green triangles represent the mean values and red lines indicate the median values.</p>
+          
+          </div>
+      </div>
+    </div>
+
+    <div style="flex: 1; margin: 10px; text-align: center;">
+      <img src="figure/skip-robustness.png" alt="The impact of different post Processing operations on the speech quality and robustness of Skip-ablation watermarking model." width="50%">
+      <div style="width: 50%; margin: 0 auto;">
+      <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post Processing operations on the speech quality and robustness of Skip-ablation watermarking model. ACC* represents the extraction accuracy of the full model.</p>
+    </div></div> -->
+    <div style="display: flex;">
+      <div style="flex: 1; margin: 10px; text-align: center;">
+          <img src="figure/skip-ablation_fidelity-1.png" alt="Fidelity comparison between Full Model and the Skip Ablation Watermarking Model." width="100%">
+            <p style="text-align: center; font-size: 13px; font-style:italic;">Fidelity comparison between Full Model and the Skip Ablation Watermarking Model. Green triangles represent the mean values and red lines indicate the median values.</p>
+      </div>
+
+      <div style="flex: 1; margin: 10px; text-align: center;">
+          <img src="figure/skip-robustness.png" alt="The impact of different post Processing operations on the speech quality and robustness of Skip-ablation watermarking model." width="100%">
+          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post Processing operations on the speech quality and robustness of Skip-ablation watermarking model. ACC* represents the extraction accuracy of the full model.</p>
+      </div>
+    </div>
+    
+
+
+    <h2>Robustness against audio reconstruction</h2>
+    We tried to train a VAE model for watermark erasure using (wmed,non-wmed) audio pairs, here we used <a href="https://github.com/moiseshorta/MelSpecVAE">MelVAE</a> and 10,000 audio from Librispeech for training. 
+    The resulting VAE model can only produce poor quality speech (samples are shown below). This may be due to the fact that it is difficult for VAE to learn to erase watermarks while maintaining good quality. 
+    But the accuracy of watermark extraction can still reach 74.90%.
+    <div class="table-container">
+      <table>
+        <tr>
+        <th>File Name</th><th>LJ001-0001.wav</th><th>LJ001-0002.wav</th><th>LJ001-0003.wav</th><th>LJ001-0004.wav</th><th>LJ001-0005.wav</th></tr>
+          <tr>
+            <td>Watermarked</td><td><audio controls><source src="samples\0+Watermark Fidelity\wm-1\LJ001-0001.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\wm-1\LJ001-0002.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\wm-1\LJ001-0003.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\wm-1\LJ001-0004.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\wm-1\LJ001-0005.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td>Reconstructed</td><td><audio controls><source src="samples\16+VAE1\LJ001-0001.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\16+VAE1\LJ001-0002.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\16+VAE1\LJ001-0003.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\16+VAE1\LJ001-0004.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\16+VAE1\LJ001-0005.wav" type="audio/wav"></audio></td>
+          </tr>
+      </table>
+    </div>
+    <br>
+    <br>
+
+    We further use the existing pre-trained clean VAE model for watermark erasure testing, as it will tend to output data close to the training data (clean) distribution. 
+    For experimental rigor, we used the VAE of the audio generation model <a href="https://arxiv.org/abs/2301.12503">AudioLDM</a> for the reconstruction operation, noting that, as described by the authors, 
+    this VAE was trained on <a href=https://ieeexplore.ieee.org/abstract/document/7952261>AudioSet</a>, <a href=https://audiocaps.github.io/>AudioCaps</a>, <a href="https://freesound.org/">Freesound</a>, 
+    and <a href=https://sound-effects.bbcrewind.co.uk/search>BBC Sound Effect library</a> and does not have any crossover with the speech dataset <a href=https://ieeexplore.ieee.org/document/7178964>Librispeech</a>, 
+    on which our watermarking model is trained. The reconstructed audio example are as follows.
+    <div class="table-container">
+      <table>
+        <tr>
+        <th>File Name</th><th>LJ001-0001.wav</th><th>LJ001-0002.wav</th><th>LJ001-0003.wav</th><th>LJ001-0004.wav</th><th>LJ001-0005.wav</th></tr>
+          <tr>
+            <td>Watermarked</td><td><audio controls><source src="samples\0+Watermark Fidelity\wm-1\LJ001-0001.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\wm-1\LJ001-0002.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\wm-1\LJ001-0003.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\wm-1\LJ001-0004.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\0+Watermark Fidelity\wm-1\LJ001-0005.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td>Reconstructed</td><td><audio controls><source src="samples\17+VAE2\LJ001-0001.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\17+VAE2\LJ001-0002.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\17+VAE2\LJ001-0003.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\17+VAE2\LJ001-0004.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="samples\17+VAE2\LJ001-0005.wav" type="audio/wav"></audio></td>
+          </tr>
+      </table>
+    </div>
+    <br>
+    <br>
+
+    The numeric results below show that the VAE reconstruction does not completely remove the watermark (ACC: 100% -> 99.98%).
+    <div style="display: flex;">
+      <div style="flex: 1; margin: 10px; text-align: center;">
+          <img src="figure/tango2-1.png" alt="The performance of our method against voice cloning attacks with VAE reconstruction propressing." width="50%">
+          <div style="width: 50%; margin: 0 auto;">
+          <p style="text-align: center; font-size: 13px; font-style:italic;">The performance of our method against voice cloning attacks with VAE reconstruction propressing and the quality of synthesized speechs. (a): Voice-Clone without VAE Reconstruction preprocessing; (b): Voice-Clone with VAE Reconstruction preprocessing; 
+            Black dots and white dots indicate mean value and median value, respectively.</p>
+      </div></div>
+    </div>
+
+
+    <h2>More discussion on adaptive attacks</h2>
+    We further consider combine different attack strategies together to destroy the proposed method. 
+    We adopt both different pre- and post- processing for removing watermark. 
+    For example, taking resampling 16 KHZ as pre-processing and MP3 compression 16Kbps as post-processing, 
+    compared with only pre-processing, ACC suffers a slight degradation (ACC:100% -> 99.94%) but the audio quality of voice cloning degrades by a large margin. 
+    (SECS: 1.000 ->0.8575). In conclusion, more severe attack strategies will further destroy the utility of voice cloning, while the proposed method is still effective to some extent.
+    The complete experimental results are shown below.
+
+    <div style="display: flex;">
+      <div style="flex: 1; margin: 10px; text-align: center;">
+          <img src="figure/a-1.png" alt="" width="100%">
+          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Resampling 16K on the speech quality and robustness.</p>
+      </div>
+      <div style="flex: 1; margin: 10px; text-align: center;">
+        <img src="figure/a-3.png" alt="" width="100%">
+        <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Mp3 Compression 64Kbps on the speech quality and robustness.</p>
+    </div>
+    </div>
+    <br>
+    <br>
+    <div style="display: flex;">
+      <div style="flex: 1; margin: 10px; text-align: center;">
+          <img src="figure/a-2.png" alt="" width="100%">
+          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Regular processing on the speech quality and robustness.</p>
+      </div>
+      <div style="flex: 1; margin: 10px; text-align: center;">
+        <img src="figure/a-4.png" alt="" width="100%">
+        <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Mp3 Compression 8Kbps on the speech quality and robustness.</p>
+    </div>
+    </div>
+    <br>
+    <br>
+    <div style="display: flex;">
+      <div style="flex: 1; margin: 10px; text-align: center;">
+          <img src="figure/a-5.png" alt="" width="100%">
+          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Low Pass Filtering 4KHz on the speech quality and robustness.</p>
+      </div>
+      <div style="flex: 1; margin: 10px; text-align: center;">
+        <img src="figure/a-7.png" alt="" width="100%">
+        <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Harmful processing on the speech quality and robustness.</p>
+    </div>
+    </div>
+    <br>
+    <br>
+    <div style="display: flex;">
+      <div style="flex: 1; margin: 10px; text-align: center;">
+          <img src="figure/a-6.png" alt="" width="100%">
+          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior VAE Reconstruction on the speech quality and robustness.</p>
+      </div>
+      <div style="flex: 1; margin: 10px; text-align: center;">
+        <img src="figure/a-8.png" alt="" width="100%">
+        <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Domain-adv training on the speech quality and robustness.</p>
+    </div>
+    </div>
+    <!-- <br>
+    <br>
+    <div style="display: flex;">
+      <div style="flex: 1; margin: 10px; text-align: center;">
+          <img src="figure/a-6.png" alt="" width="100%">
+          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior VAE Reconstruction on the speech quality and robustness.</p>
+      </div>
+      <div style="flex: 1; margin: 10px; text-align: center;">
+        <img src="figure/a-8.png" alt="" width="100%">
+        <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Domain-adv training on the speech quality and robustness.</p>
+    </div> -->
+    </div>
+  
+
+    <h2>Settings for masking</h2>
+    In the experiments, 10% frequency band masking is applied. Actually, 10% is just a hyperparameter. We further conducted experiments using 5% and 20% mask regions, and the results are shwon below, with the same conclusions as in the original manuscript.
+    <div style="display: flex;">
+      <div style="flex: 1; margin: 10px; text-align: center;">
+          <img src="figure/mask-acc-5-1.png" alt="" width="95%">
+      </div>
+      <div style="flex: 1; margin: 10px; text-align: center;">
+        <img src="figure/mask-acc-20-1.png" alt="" width="55%">
+      </div>
+    </div>
+    <div style="display: flex;">
+      <div style="flex: 1; margin: 10px; text-align: center;">
+          <img src="figure/mask-fidelity-5-1.png" alt="" width="100%">
+          <p style="text-align: center; font-size: 13px; font-style:italic;">Watermark extraction accuracy and speech quality of 5% masking.</p>
+      </div>
+      <div style="flex: 1; margin: 10px; text-align: center;">
+        <img src="figure/mask-fidelity-20-1.png" alt="" width="59%">
+        <p style="text-align: center; font-size: 13px; font-style:italic;">Watermark extraction accuracy and speech quality of 20% masking.</p>
+      </div>
+    </div>
+
+
+<h2>Discussion about limitation on overwriting attacks</h2>
+As shown in Table V in the original manuscript, an internal adpative attacker can successfully conduct a watermark overwriting attack using the original model.
+To address it, we designed a mechanism to resist watermark overwriting of insider malicious users. 
+We affect the embedding process by applying a weight from the watermark decoder to the watermark feature, 
+and add the watermark overwriting distortion in the original distortion layer to fine-tune the model, and the final enhanced model can resist the re-watermark attack (ACC: 100%).
+The model structure is shown below.
+<div style="display: flex;">
+  <div style="flex: 1; margin: 10px; text-align: center;">
+      <img src="figure/new_structure.gif" alt="" width="100%">
+  </div>
+  <div style="flex: 1; margin: 10px; text-align: center;">
+    <img src="figure/rewm-model.png" alt="" width="100%">
+</div>
+</div>
+<!-- <div style="display: flex;">
+  
+</div> -->
+<br>
+We Adopt VITS as the Voice cloning model, the watermark extraction accuracy(ACC) and the quality of all 500 synthesized speech are shown below. 
+Experimental results show that the enhanced model can resist watermark overwriting attacks by internal attackers.
+<div style="display: flex;">
+  <div style="flex: 1; margin: 10px; text-align: center;">
+      <img src="figure/rewm-model-1.png" alt=""  width="50%">
+      <div style="width: 50%; margin: 0 auto;"><p style="text-align: center; font-size: 13px; font-style:italic;">The performance of enhanced model against voice cloning attacks with watermarking overwriting processing and the quality of synthesized speechs. (a): Voice-Clone without watermark overwriting; (b): Voice-Clone with watermark overwriting; 
+        Black dots and white dots indicate mean value and median value, respectively.</p></div>
+      
+  </div>
+</div>
+
+
+</div>
+
+</section>
+
+</body>
+</html>
