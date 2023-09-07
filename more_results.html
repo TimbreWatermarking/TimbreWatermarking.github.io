@@ -18,7 +18,7 @@
   <body>
     <section class="page-header">
       <h1 class="project-name">Detecting Voice Cloning Attacks<br>via Timbre Watermarking</h1>
-      <!-- <h2 class="project-tagline">Detecting Voice Cloning Attacks via Timbre Watermarking</h2> -->
+      <!-- <h2 class="project-tagline">Detecting Voice Cloning Attacks via Timbre Watermarking</h1> -->
       <a href="index.html" class="btn">Home</a>
       <a href="more_results.html" class="btn">More Results</a>
       <a href="code.html" class="btn">Code</a>
@@ -29,7 +29,7 @@
 <section class="main-content">
       
   <div id="home">
-    <h2>Samples of current audio watermarking methods</h2>
+    <h1>Samples of current audio watermarking methods</h1>
     Current watermarking methods are also reliably imperceptible, some of their watermark samples are shown below. In the case of commonly used signal processing attacks, they can well balance the trade-off between fidelity and normal robustness.
     But they usually require strict synchronization mechanisms and temporal logic, which are undermined by deep speech cloning models.
     <div class="table-container">
@@ -62,7 +62,7 @@
 
       
 
-    <h2>Distortion caused by ISTFT</h2>
+    <h1>Distortion caused by ISTFT</h1>
     In order to explore the impact of the loss of the complex imaginary part due to the ISTFT in the watermarking scheme, we calculated the difference between the amplitude spectrum after embedding the watermark and the amplitude spectrum after performing ISTFT and STFT on it. 
     It can be found that the difference between them is so small (i.e., average MSE 0.0020) that it does not destroy the watermarked signal. 
     A spectrogram example and the MSE of amplitude spectrum pair from all 2620 test samples are shown below.
@@ -87,7 +87,7 @@
     
 
 
-    <h2>Details of the discriminator</h2>
+    <h1>Details of the discriminator</h1>
     The discriminator is integrated with the embedding process in the adversarial training manner, which is fed with watermarked and clean audio(as shown below), not synthetic and real speech. 
     Therefore, the training of the discriminator is carried out simultaneously with watermark embedding and extraction, and it is confronted with the watermark embedding network, which is the idea of <a herf="https://arxiv.org/abs/1406.2661">GAN</a>.
     Such a manner aims to improve the fidelity, namely, making watermarked audio indistinguishable from the original audio.
@@ -104,7 +104,7 @@
 
 
 
-    <h2>A Concatenated Skip Connection</h2>
+    <h1>A Concatenated Skip Connection</h1>
     We performed ablation experiments for skip concatenate with the following experimental results, which show that this operation only slightly improves fidelity and robustness.
     <!-- <div style="display: flex;">
       <div style="flex: 1; margin: 10px; text-align: center;">
@@ -135,7 +135,7 @@
     
 
 
-    <h2>Robustness against adaptive removal attacks.</h2>
+    <h1>Robustness against adaptive removal attacks</h1>
     The adaptive attackers may try to train a VAE model for watermark erasure using (wmed,non-wmed) audio pair. This attack setting is actually not practical, 
     because the attacker needs to directly obtain our watermark embedding model or train a watermark model by himself after fully mastering all the details of the watermark algorithm 
     (network structure, training data, etc.) and utilize the watermark embedding module in it to carry out the attack, 
@@ -165,7 +165,7 @@
     <br>
     <br>
 
-    <!-- <h2>Robustness against VAE reconstruction attacks.</h2>
+    <!-- <h1>Robustness against VAE reconstruction attacks.</h1>
     We further use the existing pre-trained clean VAE model for watermark destroy testing, as it will tend to output data close to the training data (clean) distribution. 
     For experimental rigor, we used the VAE of the audio generation model <a href="https://arxiv.org/abs/2301.12503">AudioLDM</a> for the reconstruction operation, noting that, as described by the authors, 
     this VAE was trained on <a href=https://ieeexplore.ieee.org/abstract/document/7952261>AudioSet</a>, <a href=https://audiocaps.github.io/>AudioCaps</a>, <a href="https://freesound.org/">Freesound</a>, 
@@ -205,7 +205,7 @@
     </div> -->
 
 
-    <h2>More discussion on adaptive attacks</h2>
+    <h1>More discussion on adaptive attacks</h1>
     We further consider combine different attack strategies together to destroy the proposed method. 
     We adopt both different pre- and post- processing for removing watermark. 
     For example, taking resampling 16 KHZ as pre-processing and MP3 compression 16Kbps as post-processing, 
@@ -273,7 +273,7 @@
     </div>
   
 
-    <h2>Settings for masking</h2>
+    <h1>Settings for masking</h1>
     In the experiments, 10% frequency band masking is applied. Actually, 10% is just a hyperparameter. We further conducted experiments using 5% and 20% mask regions, and the results are shwon below, with the same conclusions as in the original manuscript.
     <div style="display: flex;">
       <div style="flex: 1; margin: 10px; text-align: center;">
@@ -295,7 +295,7 @@
     </div>
 
 
-<h2>Discussion about limitation on overwriting attacks</h2>
+<h1>Discussion about limitation on overwriting attacks</h1>
 As shown in Table V in the original manuscript, an internal adpative attacker can successfully conduct a watermark overwriting attack using the original model.
 To address it, we designed a mechanism to resist watermark overwriting of insider malicious users. 
 We affect the embedding process by applying a weight from the watermark decoder to the watermark feature, 
