@@ -31,7 +31,7 @@
   <div id="home">
     <h1>Samples of current audio watermarking methods</h1>
     Current watermarking methods are also reliably imperceptible, some of their watermark samples are shown below. In the case of commonly used signal processing attacks, they can well balance the trade-off between fidelity and normal robustness.
-    But they usually require strict synchronization mechanisms and temporal logic, which are undermined by deep speech cloning models.
+    But they usually require strict synchronization mechanisms and temporal logic, which are undermined by deep voice cloning models.
     <div class="table-container">
       <table>
         <tr>
@@ -129,14 +129,14 @@
 
       <div style="flex: 1; margin: 10px; text-align: center;">
           <img src="figure/skip-robustness.png" alt="The impact of different post Processing operations on the speech quality and robustness of Skip-ablation watermarking model." width="100%">
-          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post Processing operations on the speech quality and robustness of Skip-ablation watermarking model. ACC* represents the extraction accuracy of the full model.</p>
+          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing operations on the speech quality and robustness of Skip Ablation Watermarking Model. ACC* represents the extraction accuracy of the Full Model.</p>
       </div>
     </div>
     
 
 
     <h1>Robustness against adaptive removal attacks</h1>
-    The adaptive attackers may try to train a VAE model for watermark erasure using (wmed,non-wmed) audio pair. This attack setting is actually not practical, 
+    The adaptive attackers may try to train a VAE model for watermark erasure using (wmed, non-wmed) audio pair. This attack setting is actually not practical, 
     because the attacker needs to directly obtain our watermark embedding model or train a watermark model by himself after fully mastering all the details of the watermark algorithm 
     (network structure, training data, etc.) and utilize the watermark embedding module in it to carry out the attack, 
     which we attempted to simulate by using <a href="https://github.com/moiseshorta/MelSpecVAE">MelVAE</a> and 10, 000 audios from Librispeech for training.
@@ -216,11 +216,11 @@
     <div style="display: flex;">
       <div style="flex: 1; margin: 10px; text-align: center;">
           <img src="figure/a-1.png" alt="" width="100%">
-          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Resampling 16K on the speech quality and robustness.</p>
+          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different voice cloning post processing combined with prior Resampling 16K on the speech quality and robustness.</p>
       </div>
       <div style="flex: 1; margin: 10px; text-align: center;">
         <img src="figure/a-3.png" alt="" width="100%">
-        <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Mp3 Compression 64Kbps on the speech quality and robustness.</p>
+        <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different voice cloning post processing combined with prior Mp3 Compression 64Kbps on the speech quality and robustness.</p>
     </div>
     </div>
     <br>
@@ -228,11 +228,11 @@
     <div style="display: flex;">
       <div style="flex: 1; margin: 10px; text-align: center;">
           <img src="figure/a-2.png" alt="" width="100%">
-          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Regular processing on the speech quality and robustness.</p>
+          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different voice cloning post processing combined with prior Regular processing on the speech quality and robustness.</p>
       </div>
       <div style="flex: 1; margin: 10px; text-align: center;">
         <img src="figure/a-4.png" alt="" width="100%">
-        <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Mp3 Compression 8Kbps on the speech quality and robustness.</p>
+        <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different voice cloning post processing combined with prior Mp3 Compression 8Kbps on the speech quality and robustness.</p>
     </div>
     </div>
     <br>
@@ -240,11 +240,11 @@
     <div style="display: flex;">
       <div style="flex: 1; margin: 10px; text-align: center;">
           <img src="figure/a-5.png" alt="" width="100%">
-          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Low Pass Filtering 4KHz on the speech quality and robustness.</p>
+          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different voice cloning post processing combined with prior Low Pass Filtering 4KHz on the speech quality and robustness.</p>
       </div>
       <div style="flex: 1; margin: 10px; text-align: center;">
         <img src="figure/a-7.png" alt="" width="100%">
-        <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Harmful processing on the speech quality and robustness.</p>
+        <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different voice cloning post processing combined with prior Harmful processing on the speech quality and robustness.</p>
     </div>
     </div>
     <!-- <br>
@@ -252,11 +252,11 @@
     <div style="display: flex;">
       <div style="flex: 1; margin: 10px; text-align: center;">
           <img src="figure/a-6.png" alt="" width="100%">
-          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior VAE Reconstruction on the speech quality and robustness.</p>
+          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different voice cloning post processing combined with prior VAE Reconstruction on the speech quality and robustness.</p>
       </div>
       <div style="flex: 1; margin: 10px; text-align: center;">
         <img src="figure/a-8.png" alt="" width="100%">
-        <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Domain-adv training on the speech quality and robustness.</p>
+        <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different voice cloning post processing combined with prior Domain-adv training on the speech quality and robustness.</p>
     </div>
     </div> -->
     <!-- <br>
@@ -264,11 +264,11 @@
     <div style="display: flex;">
       <div style="flex: 1; margin: 10px; text-align: center;">
           <img src="figure/a-6.png" alt="" width="100%">
-          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior VAE Reconstruction on the speech quality and robustness.</p>
+          <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different voice cloning post processing combined with prior VAE Reconstruction on the speech quality and robustness.</p>
       </div>
       <div style="flex: 1; margin: 10px; text-align: center;">
         <img src="figure/a-8.png" alt="" width="100%">
-        <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Domain-adv training on the speech quality and robustness.</p>
+        <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different voice cloning post processing combined with prior Domain-adv training on the speech quality and robustness.</p>
     </div> -->
     </div>
   
@@ -286,11 +286,13 @@
     <div style="display: flex;">
       <div style="flex: 1; margin: 10px; text-align: center;">
           <img src="figure/mask-fidelity-5-1.png" alt="" width="100%">
-          <p style="text-align: center; font-size: 13px; font-style:italic;">Watermark extraction accuracy and speech quality of 5% masking.</p>
+          <div style="width: 90%;">
+          <p style="text-align: center; font-size: 13px; font-style:italic;">Watermark extraction accuracy and speech quality under 5% frequency band mask at different positions.</p></div>
       </div>
       <div style="flex: 1; margin: 10px; text-align: center;">
         <img src="figure/mask-fidelity-20-1.png" alt="" width="59%">
-        <p style="text-align: center; font-size: 13px; font-style:italic;">Watermark extraction accuracy and speech quality of 20% masking.</p>
+        <div style="width: 90%;">
+        <p style="text-align: center; font-size: 13px; font-style:italic;">Watermark extraction accuracy and speech quality under 20% frequency band mask at different positions.</p></div>
       </div>
     </div>
 
