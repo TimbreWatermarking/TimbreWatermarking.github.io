@@ -29,8 +29,9 @@
 <section class="main-content">
       
   <div id="home">
-    <h2>Traditional watermarking samples</h2>
-    Traditional watermarking schemes are also reliably imperceptible, and some of their watermark samples are shown below, but they usually require strict synchronization mechanisms, which are corrupted by deep speech cloning models.
+    <h2>Samples of current audio watermarking methods</h2>
+    Current watermarking methods are also reliably imperceptible, some of their watermark samples are shown below. In the case of commonly used signal processing attacks, they can well balance the trade-off between fidelity and normal robustness.
+    But they usually require strict synchronization mechanisms and temporal logic, which are undermined by deep speech cloning models.
     <div class="table-container">
       <table>
         <tr>
@@ -43,14 +44,14 @@
             <td><audio controls><source src="samples\0+Watermark Fidelity\original cover\LJ001-0005.wav" type="audio/wav"></audio></td>
           </tr>
           <tr>
-            <td><a href="https://ieeexplore.ieee.org/document/9468371">FSVC</a></td><td><audio controls><source src="samples\0+Watermark Fidelity\FSVC\LJ001-0001.wav" type="audio/wav"></audio></td>
+            <td>FSVC<a href="https://ieeexplore.ieee.org/document/9468371">[1]</a></td><td><audio controls><source src="samples\0+Watermark Fidelity\FSVC\LJ001-0001.wav" type="audio/wav"></audio></td>
             <td><audio controls><source src="samples\0+Watermark Fidelity\FSVC\LJ001-0002.wav" type="audio/wav"></audio></td>
             <td><audio controls><source src="samples\0+Watermark Fidelity\FSVC\LJ001-0003.wav" type="audio/wav"></audio></td>
             <td><audio controls><source src="samples\0+Watermark Fidelity\FSVC\LJ001-0004.wav" type="audio/wav"></audio></td>
             <td><audio controls><source src="samples\0+Watermark Fidelity\FSVC\LJ001-0005.wav" type="audio/wav"></audio></td>
           </tr>
           <tr>
-            <td><a href="https://ieeexplore.ieee.org/document/8470100">RFDLM</a></td><td><audio controls><source src="samples\0+Watermark Fidelity\RFDLM\LJ001-0001.wav" type="audio/wav"></audio></td>
+            <td>RFDLM<a href="https://ieeexplore.ieee.org/document/8470100">[2]</a></td><td><audio controls><source src="samples\0+Watermark Fidelity\RFDLM\LJ001-0001.wav" type="audio/wav"></audio></td>
             <td><audio controls><source src="samples\0+Watermark Fidelity\RFDLM\LJ001-0002.wav" type="audio/wav"></audio></td>
             <td><audio controls><source src="samples\0+Watermark Fidelity\RFDLM\LJ001-0003.wav" type="audio/wav"></audio></td>
             <td><audio controls><source src="samples\0+Watermark Fidelity\RFDLM\LJ001-0004.wav" type="audio/wav"></audio></td>
@@ -62,17 +63,19 @@
       
 
     <h2>Distortion caused by ISTFT</h2>
-    In order to explore the impact of ISTFT distortion, we calculated the difference between the amplitude spectrum after embedding the watermark and the amplitude spectrum after performing ISTFT and STFT on it. 
+    In order to explore the impact of the loss of the complex imaginary part due to the ISTFT in the watermarking scheme, we calculated the difference between the amplitude spectrum after embedding the watermark and the amplitude spectrum after performing ISTFT and STFT on it. 
     It can be found that the difference between them is so small (i.e., average MSE 0.0020) that it does not destroy the watermarked signal. 
     A spectrogram example and the MSE of amplitude spectrum pair from all 2620 test samples are shown below.
     <div style="display: flex;">
       <div style="flex: 1; margin: 10px;">
-          <img src="figure/linear_wmed_amplitude_spectrogram.png" alt="Watermarked spectrum">
-          <p style="text-align: center; font-size: 13px; font-style:italic;">Watermarked spectrum</p>
+          <img src="figure/linear_wmed_amplitude_spectrogram.png" alt="Watermarked spectrum" width="89%">
+          <div style="width: 89%; ">
+          <p style="text-align: center; font-size: 13px; font-style:italic;">Watermarked spectrum</p></div>
       </div>
       <div style="flex: 1; margin: 10px;">
-          <img src="figure/linear_wmed_istft_stft_amplitude_spectrogram.png" alt="Watermarked spectrum &rarr; ISTFT &rarr; STFT">
-          <p style="text-align: center; font-size: 13px; font-style:italic;">Watermarked spectrum &rarr; ISTFT &rarr; STFT</p>
+          <img src="figure/linear_wmed_istft_stft_amplitude_spectrogram.png" alt="Watermarked spectrum &rarr; ISTFT &rarr; STFT" width="89%">
+          <div style="width: 89%;">
+          <p style="text-align: center; font-size: 13px; font-style:italic;">Watermarked spectrum &rarr; ISTFT &rarr; STFT</p></div>
       </div>
       <div style="flex: 1; margin: 10px;">
         <img src="figure/istft-mse-1.png" alt="istft-mse">
@@ -101,7 +104,7 @@
 
 
 
-    <h2>The effect of skip concatenate</h2>
+    <h2>A Concatenated Skip Connection</h2>
     We performed ablation experiments for skip concatenate with the following experimental results, which show that this operation only slightly improves fidelity and robustness.
     <!-- <div style="display: flex;">
       <div style="flex: 1; margin: 10px; text-align: center;">
@@ -132,8 +135,11 @@
     
 
 
-    <h2>Robustness against audio reconstruction</h2>
-    We tried to train a VAE model for watermark erasure using (wmed,non-wmed) audio pairs, here we used <a href="https://github.com/moiseshorta/MelSpecVAE">MelVAE</a> and 10,000 audio from Librispeech for training. 
+    <h2>Robustness against adaptive removal attacks.</h2>
+    The adaptive attackers may try to train a VAE model for watermark erasure using (wmed,non-wmed) audio pair. This attack setting is actually not practical, 
+    because the attacker needs to directly obtain our watermark embedding model or train a watermark model by himself after fully mastering all the details of the watermark algorithm 
+    (network structure, training data, etc.) and utilize the watermark embedding module in it to carry out the attack, 
+    which we attempted to simulate by using <a href="https://github.com/moiseshorta/MelSpecVAE">MelVAE</a> and 10, 000 audios from Librispeech for training.
     The resulting VAE model can only produce poor quality speech (samples are shown below). This may be due to the fact that it is difficult for VAE to learn to erase watermarks while maintaining good quality. 
     But the accuracy of watermark extraction can still reach 74.90%.
     <div class="table-container">
@@ -148,7 +154,7 @@
             <td><audio controls><source src="samples\0+Watermark Fidelity\wm-1\LJ001-0005.wav" type="audio/wav"></audio></td>
           </tr>
           <tr>
-            <td>Reconstructed</td><td><audio controls><source src="samples\16+VAE1\LJ001-0001.wav" type="audio/wav"></audio></td>
+            <td>VAE Reconstructed</td><td><audio controls><source src="samples\16+VAE1\LJ001-0001.wav" type="audio/wav"></audio></td>
             <td><audio controls><source src="samples\16+VAE1\LJ001-0002.wav" type="audio/wav"></audio></td>
             <td><audio controls><source src="samples\16+VAE1\LJ001-0003.wav" type="audio/wav"></audio></td>
             <td><audio controls><source src="samples\16+VAE1\LJ001-0004.wav" type="audio/wav"></audio></td>
@@ -159,7 +165,8 @@
     <br>
     <br>
 
-    We further use the existing pre-trained clean VAE model for watermark erasure testing, as it will tend to output data close to the training data (clean) distribution. 
+    <!-- <h2>Robustness against VAE reconstruction attacks.</h2>
+    We further use the existing pre-trained clean VAE model for watermark destroy testing, as it will tend to output data close to the training data (clean) distribution. 
     For experimental rigor, we used the VAE of the audio generation model <a href="https://arxiv.org/abs/2301.12503">AudioLDM</a> for the reconstruction operation, noting that, as described by the authors, 
     this VAE was trained on <a href=https://ieeexplore.ieee.org/abstract/document/7952261>AudioSet</a>, <a href=https://audiocaps.github.io/>AudioCaps</a>, <a href="https://freesound.org/">Freesound</a>, 
     and <a href=https://sound-effects.bbcrewind.co.uk/search>BBC Sound Effect library</a> and does not have any crossover with the speech dataset <a href=https://ieeexplore.ieee.org/document/7178964>Librispeech</a>, 
@@ -195,7 +202,7 @@
           <p style="text-align: center; font-size: 13px; font-style:italic;">The performance of our method against voice cloning attacks with VAE reconstruction propressing and the quality of synthesized speechs. (a): Voice-Clone without VAE Reconstruction preprocessing; (b): Voice-Clone with VAE Reconstruction preprocessing; 
             Black dots and white dots indicate mean value and median value, respectively.</p>
       </div></div>
-    </div>
+    </div> -->
 
 
     <h2>More discussion on adaptive attacks</h2>
@@ -240,7 +247,7 @@
         <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Harmful processing on the speech quality and robustness.</p>
     </div>
     </div>
-    <br>
+    <!-- <br>
     <br>
     <div style="display: flex;">
       <div style="flex: 1; margin: 10px; text-align: center;">
@@ -251,7 +258,7 @@
         <img src="figure/a-8.png" alt="" width="100%">
         <p style="text-align: center; font-size: 13px; font-style:italic;">The impact of different post processing with prior Domain-adv training on the speech quality and robustness.</p>
     </div>
-    </div>
+    </div> -->
     <!-- <br>
     <br>
     <div style="display: flex;">
@@ -293,7 +300,10 @@ As shown in Table V in the original manuscript, an internal adpative attacker ca
 To address it, we designed a mechanism to resist watermark overwriting of insider malicious users. 
 We affect the embedding process by applying a weight from the watermark decoder to the watermark feature, 
 and add the watermark overwriting distortion in the original distortion layer to fine-tune the model, and the final enhanced model can resist the re-watermark attack (ACC: 100%).
-The model structure is shown below.
+<p></p>
+The model structure is shown below. &#9312;: Extract the weight factor <b>S</b> from the audio to be watermarked; &#9313;: Use factor <b>S</b> to weight the watermark features in the watermark embedding network; 
+&#9314;: Input the watermarked audio and a randomly generated second watermark into the watermark embedding network;
+&#9315;: Input the watermark overwrited audio into the distortion layer and proceed to subsequent watermark extraction and network parameter optimization.
 <div style="display: flex;">
   <div style="flex: 1; margin: 10px; text-align: center;">
       <img src="figure/new_structure.gif" alt="" width="100%">
