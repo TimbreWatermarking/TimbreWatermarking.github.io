@@ -20,7 +20,6 @@
       <h1 class="project-name">Detecting Voice Cloning Attacks<br>via Timbre Watermarking</h1>
       <!-- <h2 class="project-tagline">Detecting Voice Cloning Attacks via Timbre Watermarking</h2> -->
       <a href="index.html" class="btn">Home</a>
-      <a href="more_results.html" class="btn">More Results</a>
       <a href="code.html" class="btn">Code</a>
       <a href="samples.html" class="btn">Audio Samples</a>
       <a href="mos.html" class="btn">MOS Test Samples</a>
@@ -37,10 +36,18 @@
     <h2>Abstract</h2>
 
     <p>
-      &nbsp;&nbsp;Nowadays, it is common to release audio content to the public, for social sharing or commercial purposes. However, with the rise of voice cloning technology, attackers have the potential to easily impersonate a specific person by utilizing his publicly released audio without any permission. Therefore, it becomes significant to detect any potential misuse of the released audio content and protect its timbre from being impersonated.
-      <br>&nbsp;&nbsp;To this end, we introduce a novel concept, “Timbre Watermarking”, which embeds watermark information into the target individual’s speech, eventually defeating the voice cloning attacks.
-                      However, there are two challenges: 1) robustness: the attacker can remove the watermark with common speech preprocessing before launching voice cloning attacks; 2) generalization: there are a variety of voice cloning approaches for the attacker to choose, making it hard to build a general defense against all of them.
-      <br>&nbsp;&nbsp;To address these challenges, we design an end-to-end voice cloning-resistant detection framework. The core idea of our solution is to embed the watermark into the frequency domain, which is inherently robust against common data processing methods. A repeated embedding strategy is adopted to further enhance the robustness. To acquire generalization across different voice cloning attacks, we modulate their shared process and integrate it into our framework as a distortion layer. Experiments demonstrate that the proposed timbre watermarking can defend against different voice cloning attacks, exhibit strong resistance against various adaptive attacks, and achieve practicality in realworld services such as PaddleSpeech, Voice-Cloning-App, and sovits-svc. In addition, ablation studies are also conducted to verify the effectiveness of our design.
+      &nbsp;&nbsp;Nowadays, it is common to release audio content to the public, for social sharing or commercial purposes. However, with the rise of voice cloning technology, 
+                  attackers have the potential to easily impersonate a specific person by utilizing his publicly released audio without any permission.
+                  Therefore, it becomes significant to detect any potential misuse of the released audio content and protect its timbre from being impersonated.
+      <br>&nbsp;&nbsp;To this end, we introduce a novel concept, ``Timbre Watermarking'', which embeds watermark information into the target individual's speech, eventually defeating the voice cloning attacks. 
+                      However, there are two challenges: 1) robustness: the attacker can remove the watermark with common speech preprocessing before launching voice cloning attacks; 
+                      2) generalization: there are a variety of voice cloning approaches for the attacker to choose, making it hard to build a general defense against all of them.
+      <br>&nbsp;&nbsp;To address these challenges, we design an end-to-end voice cloning-resistant detection framework. The core idea of our solution is to embed the watermark into the frequency domain, 
+      which is inherently robust against common data processing methods. A repeated embedding strategy is adopted to further enhance the robustness. 
+      To acquire generalization across different voice cloning attacks, we modulate their shared process and integrate it into our framework as a distortion layer. 
+      Experiments demonstrate that the proposed timbre watermarking can defend against different voice cloning attacks, exhibit strong resistance against various adaptive attacks (reconstruction-based removal attacks, watermark overwriting attacks), 
+      and achieve practicality in realworld services such as PaddleSpeech, Voice-Cloning-App, and sovits-svc. 
+      In addition, ablation studies are also conducted to verify the effectiveness of our design.
     </p>
 
     <!-- <h2>Timbre Watermarking Model Diagram</h2> -->
